@@ -85,10 +85,49 @@ Date of finished: --.12.2023
 Далее скачаем netbox.csv файл с описанием роутеров
 
 #### Написание сценария для настройки двух роутеров
-Предполагается, что NetBox будет считывать csv файл и распределять их в два разных файла yml, при этом скачанный ранее csv перенесем на сервер с ansible
+Предполагается, что NetBox будет считывать csv файл и распределять их в два разных файла yml, при этом скачанный ранее csv перенесем на сервер с ansible, а playbook изменябщий имена устройств и их IP адресов представлен далее:  
 
-Полный inventory файл для подключения к роутерам представлен ниже: , а playbook изменябщий имена устройств и их IP адресов представлен далее: 
+Полный inventory файл для подключения к роутерам представлен ниже: [Конфиг](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab3/resources/inventory.yml 
 
+Playbook:  
+```yaml  
+- name: Setting Routers  
+  hosts: ungrouped  
+  tasks:  
+    - name: Setting name  
+      community.routeros.command:  
+        commands:  
+          - /system identity set name="{{interfaces[0].device.name}}"  
+    - name: Seting name  
+      community.routeros.command:  
+        commands:  
+        - /ip address add address="{{interfaces[0].ip_addresses[1].address}}" interface="{{interfaces[0].display}}"  
+```  
+#### Выгрузка данных из роутера на Netbox
+Выполним обратную задачу: данные из chr передаются в файл на виртуальную машину, а с помощью playbook выгружается в Netbox.
+
+```yaml  
+- name: Getting number
+  hosts: ungrouped
+  tasks:
+    - name: Getting number
+      community.routeros.command:
+        commands:
+          - /system license print
+      register: license_print
+    - name: Getting name
+      community.routeros.command:
+        commands:
+          - /system identity print
+      register: identity_print
+    - name: Add number to Netbox
+      netbox_device:
+        netbox_url: http://127.0.0.1:8000
+        netbox_token: 7a60121059b705c5bd9323fb1f1c40e9dd90124d32fd12
+        data:
+          name: "{{identity_print.stdout_lines[0][0].split(' ').1}}"
+          serial: "{{license_print.stdout_lines[0][0].split(' ').1}}"
+```
 
 ## Вывод
 В результате выполнения данной лабораторной работы были изучены основы работы с Ansible, который упрощает конфигурацию большого количества устройств одновременно через создания файла-инвентаря hosts и playbook, в котором находится основная конфигурационная последовательность команд
