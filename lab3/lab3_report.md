@@ -127,6 +127,10 @@ Playbook:
           name: "{{identity_print.stdout_lines[0][0].split(' ').1}}"
           serial: "{{license_print.stdout_lines[0][0].split(' ').1}}"
 ```
+Схема связи:
+
+![Схема](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab2/resources/Схема_2.jpg)  
+
 
 ## Вывод
 В результате выполнения данной лабораторной работы были изучены основы работы с NetBox, взаимодействие со стороны роутеров, а также взаимодействие со стороны самого Netbox. Связка Ansible-NetBox является рациональным способом моделирования и документирования современных сетей (Voice and UC Source of Truth)
