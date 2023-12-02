@@ -1,4 +1,3 @@
-![image](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/assets/57844480/dbb83eb3-598b-413e-92b7-8c0045605bdf)University: [ITMO University](https://itmo.ru/ru/)  
 Faculty: [FICT](https://fict.itmo.ru)  
 Course: [Network-programming](https://itmo-ict-faculty.github.io/network-programming/)   
 Year: 2023/2024  
