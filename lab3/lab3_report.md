@@ -1,4 +1,4 @@
-University: [ITMO University](https://itmo.ru/ru/)  
+![image](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/assets/57844480/dbb83eb3-598b-413e-92b7-8c0045605bdf)University: [ITMO University](https://itmo.ru/ru/)  
 Faculty: [FICT](https://fict.itmo.ru)  
 Course: [Network-programming](https://itmo-ict-faculty.github.io/network-programming/)   
 Year: 2023/2024  
@@ -56,6 +56,39 @@ Date of finished: --.12.2023
 Процесс сбора статики:
 
 ![Сбор статики](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab3/resources/Снимок%20экрана%202023-12-02%20203950.png)
+
+
+Также был установлен Nginx, который позволяет создать веб-сервер (обратный прокси, почтовый сервер), Gunicorn - для запуска Web приложений на Python (аналог Tomcat JE)
+>sudo su
+> apt-get install -y nginx  
+> cp /opt/netbox/netbox-3.37v/netbox/contrib/nginx.conf /etc/nginx/sites-available/netbox  
+> cd /etc/nginx/sites-enabled/  
+> rm default  
+> ln -s /etc/nginx/sites-available/netbox  
+> nginx -t  
+> nginx -s reload  
+> cp contrib/gunicorn.py /opt/netbox/gunicorn.py  
+> cp contrib/*.service /etc/systemd/system/  
+> systemctl daemon-reload  
+> systemctl start netbox netbox-rq  
+> systemctl enable netbox netbox-rq
+
+Переходим в браузер, вводим логин и пароль от учетки суперпользователя:
+
+![Учетная запись](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab3/resources/Снимок%20экрана%202023-12-02%20204601.png)  
+
+#### Работа с NetBox
+Была добавлена базовая информация об двух роутеров на Ether2 интерфейсе:
+
+![Базовая информация](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab3/resources/Снимок%20экрана%202023-12-02%20204900.png)  
+
+Далее скачаем netbox.csv файл с описанием роутеров
+
+#### Написание сценария для настройки двух роутеров
+Предполагается, что NetBox будет считывать csv файл и распределять их в два разных файла yml, при этом скачанный ранее csv перенесем на сервер с ansible
+
+Полный inventory файл для подключения к роутерам представлен ниже: , а playbook изменябщий имена устройств и их IP адресов представлен далее: 
+
 
 ## Вывод
 В результате выполнения данной лабораторной работы были изучены основы работы с Ansible, который упрощает конфигурацию большого количества устройств одновременно через создания файла-инвентаря hosts и playbook, в котором находится основная конфигурационная последовательность команд
