@@ -45,21 +45,21 @@ Date of finished: --.12.2023
 * Блок применения, который применяет таблицу.  
 * TODO: Депарсер, который выбирает порядок вставки полей в исходящий пакет.  
 
-Код для заголовка представлен ниже:
+Код для заголовка представлен ниже:  
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123726.png)  
 
-Код для парсера представлен ниже:
+Код для парсера представлен ниже:  
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123759.png)  
 
-Код для Ingress (для перессылки IPv4 пакетов) представлен ниже:
+Код для Ingress (для перессылки IPv4 пакетов) представлен ниже:  
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123851.png)  
-и
+и  
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123910.png)  
 
-Код для депарсера (добавление заголовка обратно) представлен ниже:
+Код для депарсера (добавление заголовка обратно) представлен ниже:  
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123920.png)  
 
-В результате написания программы теперь возможно обращение к соседним сетевым устройствам:
+В результате написания программы теперь возможно обращение к соседним сетевым устройствам:  
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20120808.png)  
 
 Схема задания изображена ниже:
@@ -80,3 +80,16 @@ Date of finished: --.12.2023
 Далее парсер parse_ethernet был изменен, чтобы извлечь либо ipv4 заголовок, либо myTunnel заголовок в зависимости от значения поля etherType. Значение etherType, которое соответствует заголовку myTunnel, равно 0x1212. Это значение определено в самом начале файла.  
 
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20124152.png)  
+
+Далее была определена таблица маршрутизации
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20124228.png) 
+
+и  
+
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20124237.png)  
+
+Депарсер представлен ниже:  
+
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20124245.png)  
+
+Результат выполнения данного задания приведен ниже. Запущенные скрипты 
