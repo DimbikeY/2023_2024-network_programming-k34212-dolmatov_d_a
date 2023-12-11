@@ -30,5 +30,34 @@ Date of finished: --.12.2023
 Далее, начнем выполнение первого задания
 
 ### Basic forwarding  
+Полный файл basic.p4 будет содержать следующие компоненты:  
+
+Определения типов заголовков для Ethernet (ethernet_t) и IPv4 (ipv4_t).  
+TODO: Парсеры для Ethernet и IPv4, которые заполняют поля ethernet_t и ipv4_t.  
+Действие для сброса пакета, использующее функцию mark_to_drop().  
+TODO: Действие (называемое ipv4_forward), которое:  
+Устанавливает порт выхода для следующего хопа.  
+Обновляет адрес назначения ethernet адресом следующего хопа.  
+Обновляет адрес источника ethernet адресом коммутатора.  
+Уменьшает TTL.  
+TODO: Элемент управления, который:  
+Определяет таблицу, которая будет считывать адрес назначения IPv4 и вызывать либо drop, либо ipv4_forward.  
+Блок применения, который применяет таблицу.  
+TODO: Депарсер, который выбирает порядок вставки полей в исходящий пакет.  
+
+Код для заголовка представлен ниже:
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123726.png)  
+
+Код для парсера представлен ниже:
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123759.png)  
+
+Код для Ingress (для перессылки IPv4 пакетов) представлен ниже:
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123851.png)  
+и
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123910.png)  
+
+Код для депарсера (добавление заголовка обратно) представлен ниже:
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20123920.png)  
 
 
+### Basic Tunneling
