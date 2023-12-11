@@ -92,4 +92,15 @@ Date of finished: --.12.2023
 
 ![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/Снимок%20экрана%202023-12-11%20124245.png)  
 
-Результат выполнения данного задания приведен ниже. Запущенные скрипты 
+Результаты выполнения данного задания приведены:  
+Первый пакет был отправлен без данных:
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/1_final.png)  
+
+Второй пакет был отправлен с данными для туннелирования:  
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/2_final.png)  
+
+Третий пакет был отправлен по IP адресу третьего с dst_id второго. Приоритет идёт по dst_id => пакет ушёл на второй коммутатор, проигнорировав третий:  
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/3_final.png)  
+
+Схема представлена ниже:  
+![](https://github.com/DimbikeY/2023_2024-network_programming-k34212-dolmatov_d_a/blob/main/lab4/resources/17.png)  
